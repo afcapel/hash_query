@@ -3,7 +3,7 @@ require 'set'
 module HashQuery
 
   def query(path, subhash = self, prefix = nil)
-    all_subpaths(path, subhash, prefix).find_all { |k| File.fnmatch?(path, k) }
+    all_subpaths(path, subhash, prefix).find_all { |k| File.fnmatch?(path.gsub('.', '/'), k.gsub('.', '/')) }
   end
 
   def all_subpaths(path = '*', subhash = self, prefix = nil)
