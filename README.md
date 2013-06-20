@@ -26,13 +26,17 @@ hash = {
 
 hash.extend HashQuery
 
-hash.query('*.database.db_*')
 
+hash.query('production.database.adapter')
+# => ['production.database.adapter']
+
+
+hash.query('*.database.db_*')
 # => ["development.database.db_password", "development.database.db_user",
 # "production.database.db_password", "production.database.db_user"]
 
-hash.query('**.*password')
 
+hash.query('**.*password')
 # => ["development.password", "development.database.db_password",
 # "production.password", "production.database.db_password"]
 ```
